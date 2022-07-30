@@ -47,11 +47,11 @@ function managerPrompt() {
     )
 }
 
-function menu() {
-    while (true) {
+// function menu() {
+//     while (true) {
 
-    }
+//     }
 
-}
+// }
 
-menu();
+// menu();
