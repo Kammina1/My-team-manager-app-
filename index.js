@@ -1,10 +1,15 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const generateTeam = require('./src/template.js')
+
+
 const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-
+// create an empty array to store team data
+var team = [];
+// start by getting manager information
 async function managerPrompt() {
   var manager = await inquirer.prompt([
     {
@@ -58,6 +63,7 @@ async function managerPrompt() {
   ]);
   return new Manager(manager.name, manager.ein, manager.email, manager.number);
 }
+// get the rest of the teams information
 async function engineerPrompt() {
   var engineer = await inquirer.prompt([
     {
@@ -169,6 +175,7 @@ async function internPrompt() {
   ]);
   return new Intern(intern.name, intern.ein, intern.email, intern.username);
 }
+// allows user to add more employees or quit
 async function teamFunction() {
   var role = await inquirer.prompt([
     {
@@ -180,9 +187,8 @@ async function teamFunction() {
   ]);
   return role.position;
 }
-
+//Pushes the data into the empty team array.
 async function menu() {
-  var team = [];
   var manager = await managerPrompt();
   team.push(manager);
   var menuLoop = true;
@@ -205,7 +211,17 @@ async function menu() {
       }
     }
   }
+  return createTeam();
   console.log(team);
 }
-
+//initializes the data collection
 menu();
+//writes responses to an html file to view.
+function createTeam() {
+  console.log("New Employee", team)
+  fs.writeFileSync(
+    './dist/index.html',
+    generateTeam(team),
+    "utf-8"
+  );
+}
