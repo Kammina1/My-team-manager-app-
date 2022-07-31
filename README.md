@@ -5,5 +5,4 @@
 ### After getting manager information, it allows a user to give information about an intern or an engineer.
 ### The app then takes all input from the user and compiles that data into an html file for the user to see.
 
-link to video walk through: https://drive.google.com/file/d/1ac2a11U2zFcbnhf8G_nuuBPxfBulGHHH/view
 [App link] (https://drive.google.com/file/d/1ac2a11U2zFcbnhf8G_nuuBPxfBulGHHH/view)
